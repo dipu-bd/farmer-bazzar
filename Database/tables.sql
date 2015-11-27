@@ -5,9 +5,8 @@ CREATE TABLE District (
 );
 
 /* user data */
-CREATE TABLE UserInfo (
-	ID INTEGER PRIMARY KEY,
-	UserID INTEGER, /* id of the user */
+CREATE TABLE PersonInfo (
+	ID INTEGER PRIMARY KEY, 
 	ModAccess INTEGER CHECK(ModAccess BETWEEN 0 AND 1), /* access type of the user */
 	Email VARCHAR(100) NOT NULL, /* email of the user */
 	FirstName VARCHAR(60) NOT NULL, /* first name */
@@ -43,7 +42,7 @@ CREATE TABLE ProductInfo (
 	Name VARCHAR(230) NOT NULL,  /* name of the product */
 	Details VARCHAR(450), /* short information about the product */	
 	CropID INTEGER, /* id of the crop */
-	UserID INTEGER, /* id of the user posted */
+	UserID INTEGER REFERENCES PersonInfo(ID), /* id of the user posted */
 	DistID REFERENCES District(ID) NOT NULL, /* id of the home district */	
 	MfDate DATE, /* date of manufacturing */
 	ExpDate DATE, /* date of expiration */
