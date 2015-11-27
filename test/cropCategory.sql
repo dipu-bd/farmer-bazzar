@@ -13,3 +13,10 @@ insert into CatChildren values(1,6);
 insert into CatChildren values(1,5);
 insert into CatChildren values(4,8);
 insert into CatChildren values(4,9);
+
+
+insert into RateInfo values(1,1,1,4);
+insert into RateInfo values(2,2,2,3);
+insert into RateInfo values(3,3,3,2);
+insert into RateInfo values(4,4,4,5);
+insert into RateInfo values(5,5,5,4);
