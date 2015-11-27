@@ -81,7 +81,7 @@ public class CreateAccountServlet extends HttpServlet {
        String[] str = {name,password,phoneNumber,address,district};
        DatabaseConnector dc = new DatabaseConnector();
        dc.setConnectionWithOracle();
-      
+       System.out.println(name);
        userID=dc.enterUserInfoToDatabase(str);
        response.sendRedirect("RegistrationSuccesfull.jsp");
     }

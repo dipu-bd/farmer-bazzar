@@ -57,8 +57,7 @@ public class DatabaseConnector {
             }
             int modAccess=0;
             // st.executeQuery("create sequence a minvalue "+count+" "+"start with "+count+" "+"increment by 1");
-            st.executeQuery("insert into personinfo2 values(" + count + "," +"'" + str[0] + "'" + "," + "'" + str[3] + "'" + "," + "'" + str[1] + "'" + ","
-                    + "'" + str[2] + "'" + "," + "'" + str[4] +")");
+            st.executeQuery("insert into personinfo2 values(" + count+ ","+"'"+str[0]+"'"+","+"'"+str[1]+"'"+","+"'"+str[2]+"'"+","+"'"+str[3]+"'"+","+"'"+str[4]+"'"+")");
             st.executeQuery("commit");
             System.out.println("Alhamdulillah" + count);
         } catch (Exception e) {
@@ -71,7 +70,7 @@ public class DatabaseConnector {
          int flag=0;
         try {
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select id,password from userinfo");
+            ResultSet rs = st.executeQuery("select id,password from personinfo2");
             while (rs.next()) {
                 String ID =rs.getString("id").toString();
                 String password=rs.getString("password").toString();
@@ -96,9 +95,9 @@ public class DatabaseConnector {
         String userName=null;
         try{
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select username from userinfo where id="+userID);
+            ResultSet rs = st.executeQuery("select name from personinfo2 where id="+userID);
             while (rs.next()){
-                userName = rs.getString("username");
+                userName = rs.getString("name");
             }
         }
         catch(Exception e){}

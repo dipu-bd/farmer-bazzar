@@ -96,6 +96,9 @@
     </head>
     <body style="overflow-y: auto;overflow-x: hidden">
          <%
+            CurrentUser cu2 = (CurrentUser) session.getAttribute("cu");
+        %>
+         <%
             Connection conn = null;
             conn = null;
             try {
@@ -113,16 +116,14 @@
                 System.out.println("error rror ttor");
             }%>
 
-        <h1>
-            Welcome User!!!
-        </h1>
+      
        <div class="left" >
            <input onclick="showUserinfo()" type="button" value="showinfo" id="loginbutton" style="height: 35px;width: 200px"></input>
            <br>
            <input onclick="showProductsinfo()" type="button" value="showproducts" id="loginbutton" style="height: 35px;width: 200px"></input>
        </div>
         <div class="center" id="userinfo">
-            UserName : Rafi
+            UserName : <%= cu2.getName()%>
         </div>
             <div class="center" id="productsinfo" style="display:none" >
              <table>
