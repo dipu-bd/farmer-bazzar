@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
 <!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
@@ -12,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
         <title>Sign Up Form</title>
 
-        
+
         <style>
             #loginbutton{
                 background-color: Transparent;
@@ -43,7 +47,7 @@
                 height: 50px;
                 width: 50px;
             }
-             ul {
+            ul {
                 list-style-type: none;
                 padding: 0;
                 overflow: hidden;
@@ -83,10 +87,28 @@
 
     <body id="login">
 
+        <%
+            Connection conn = null;
+            conn = null;
+            try {
+                String driverName = "oracle.jdbc.driver.OracleDriver";
+                Class.forName(driverName);
+                String serverName = "localhost";
+                String serverPort = "1521";
+                String sid = "orcl";
+                String url = "jdbc:oracle:thin:@" + serverName + ":" + serverPort + ":" + sid;
+                String username = "SuperStoreDatabase";
+                String password = "1234";
+                conn = DriverManager.getConnection(url, username, password);
+                System.out.println("ALHAMDULILLAH");
+            } catch (Exception e) {
+                System.out.println("error rror ttor");
+            }%>
+
         <!-- Home -->
         <section>
 
-           
+
             <div>
                 <div>
                     <div>
@@ -112,12 +134,12 @@
                                     <td>Password</td>
                                     <td style="color: black"><input type="password" name="password"></td>
                                 </tr>
-                              
+
                             </table>
-                           
+
                             <input type="submit" id="loginbutton" value="Login">
                         </form>
-                         <form method="post" action="CreateAccountServlet" id="signupform" style="text-align: center;display: none">
+                        <form method="post" action="CreateAccountServlet" id="signupform" style="text-align: center;display: none">
                             <table width="100%">
 
                                 <th width="50%"></th>
@@ -125,28 +147,42 @@
 
 
                                 <tr id="tabledata">
-                                    <td>UserName</td>
-                                    <td style="color: black"><input name="UserName"></td>
+                                    <td>Email</td>
+                                    <td style="color: black"><input name="Email"></td>
+                                </tr>
+                                <tr id="tabledata">
+                                    <td>FirstName</td>
+                                    <td style="color: black"><input name="FirstName"></td>
+                                </tr>
+                                <tr id="tabledata">
+                                    <td>LastName</td>
+                                    <td style="color: black"><input name="LastName"></td>
                                 </tr>
                                 <tr id="tabledata">
                                     <td>Password</td>
-                                    <td style="color: black"><input type="password" name="ChoosePassword"></td>
+                                    <td style="color: black"><input name="Password"></td>
                                 </tr>
                                 <tr id="tabledata">
-                                    <td>Phone Number</td>
+                                    <td>PhoneNumber</td>
                                     <td style="color: black"><input name="PhoneNumber"></td>
                                 </tr>
                                 <tr id="tabledata">
-                                    <td>City</td>
-                                    <td style="color: black"><input name="City"></td>
+                                    <td>Address</td>
+                                    <td style="color: black"><input name="Address"></td>
                                 </tr>
-                                <tr id="tabledata">
-                                    <td>Area</td>
-                                    <td style="color: black"><input name="Area"></td>
-                                </tr>
-                                <tr id="tabledata">
-                                    <td>House Number</td>
-                                    <td style="color: black"><input name="HouseNumber"></td>
+                                <tr>
+                                <select name="district">
+                                    <%
+                                        try {
+                                            Statement st = conn.createStatement();
+                                            ResultSet rs = st.executeQuery("select name from District");
+                                            while (rs.next()) { %>
+                                            <option value= <% rs.getString("name") ;%> > <% rs.getString("name"); %> </option>
+                                    <% }
+                                        } catch (Exception e) {
+                                        }
+                                    %> 
+                                </select>
                                 </tr>
                             </table>
                             <input type="submit" id="loginbutton">
@@ -157,15 +193,15 @@
             </div> <!-- /.container -->
         </section> <!-- /#header -->
 
-       <script>
-         function showLoginForm() {
+        <script>
+            function showLoginForm() {
                 document.getElementById("loginform").style.display = "block";
                 document.getElementById("signupform").style.display = "none";
-        }
-        function showSignupForm() {
+            }
+            function showSignupForm() {
                 document.getElementById("signupform").style.display = "block";
                 document.getElementById("loginform").style.display = "none";
-        }
-           </script>
+            }
+        </script>
     </body>
 </html>
