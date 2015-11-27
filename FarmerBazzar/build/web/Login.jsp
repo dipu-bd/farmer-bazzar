@@ -171,18 +171,21 @@
                                     <td style="color: black"><input name="Address"></td>
                                 </tr>
                                 <tr>
+                                    <td>District</td>
+                                    <td>
                                 <select name="district">
                                     <%
                                         try {
                                             Statement st = conn.createStatement();
-                                            ResultSet rs = st.executeQuery("select name from District");
+                                            ResultSet rs = st.executeQuery("select name from district");
                                             while (rs.next()) { %>
-                                            <option value= <% rs.getString("name") ;%> > <% rs.getString("name"); %> </option>
+                                            <option> <%= rs.getString("name") %>  </option>
                                     <% }
                                         } catch (Exception e) {
                                         }
                                     %> 
                                 </select>
+                                    </td>
                                 </tr>
                             </table>
                             <input type="submit" id="loginbutton">
