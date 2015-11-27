@@ -30,7 +30,7 @@ CREATE TABLE CropCategory (
 /* child category list */
 CREATE TABLE CatChildren (
 	ParentID INTEGER REFERENCES CropCategory(ID), /* category which child it is */
-	ChildID INTEGER REFERENCES CropCategory(ID), /* ID of the child category */
+	ChildID INTEGER REFERENCES CropCategory(ID) /* ID of the child category */
 );
 
 /* To store crop information */
