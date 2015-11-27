@@ -9,12 +9,13 @@ CREATE TABLE PersonInfo (
 	ID INTEGER PRIMARY KEY, 
 	ModAccess INTEGER CHECK(ModAccess BETWEEN 0 AND 1), /* access type of the user */
 	Email VARCHAR(100) NOT NULL, /* email of the user */
+	Password VARCHAR(25) NOT NULL, /* password */
 	FirstName VARCHAR(60) NOT NULL, /* first name */
 	LastName VARCHAR(60) NOT NULL,	/* last name */
-	PhoneNumber VARCHAR(20) NOT NULL, /* Phone number */
+	PhoneNumber VARCHAR(20) NOT NULL, /* Phone number */	
 	Address VARCHAR(250) NOT NULL, /* general address field for the user */
-	DistID REFERENCES District(ID) NOT NULL, /* id of the home district */	
-	DateOfBirth DATE,
+	DistID REFERENCES District(ID) NOT NULL, /* id of the home district */			
+	DateOfBirth DATE,	
 	Graphic BLOB
 );
 
