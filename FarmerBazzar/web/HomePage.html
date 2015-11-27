@@ -1,16 +1,68 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<!--[if IE 7 ]><html class="ie ie7 lte9 lte8 lte7" lang="en-US"><![endif]-->
+<!--[if IE 8]><html class="ie ie8 lte9 lte8" lang="en-US">	<![endif]-->
+<!--[if IE 9]><html class="ie ie9 lte9" lang="en-US"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="noIE" lang="en-US">
+    <!--<![endif]-->
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- meta -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no"/>
+        <title>Home Page</title>
+        <style>
+            ul {
+                list-style-type: none;
+                padding: 0;
+                overflow: hidden;
+            }
+            li{
+                float: right;
+            }
+            nav a {
+                display: block;
+                width: 100px;
+                height: 30px;
+                color: white;
+                font-size: 20px;
+                text-decoration: none;
+            }
+            body#home a#homenav,body#signup a#signnav,body#login a#loginnav{
+                color: red;
+            }
+            body {
+                background: url("assets/homepage/images/header.png");
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        </style>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+                <script src="assets/js/html5shiv.js"></script>
+                <script src="assets/js/respond.js"></script>
+        <![endif]-->
+
+        <!--[if IE 8]>
+        <script src="assets/js/selectivizr.js"></script>
+    <![endif]-->
     </head>
-    <body>
-        <div>TODO write content</div>
+
+    <body id="home">
+        <!-- Home -->
+        <section>
+            
+            <div>
+                <h1 style="font-family: monospace;font-size: 40px;color: whitesmoke;text-align: center">
+                    WELCOME TO Online Farmer Bazar
+                </h1>
+                
+                
+                
+            </div> <!-- /.header-wrapper -->
+        </section> <!-- /#header -->
     </body>
 </html>

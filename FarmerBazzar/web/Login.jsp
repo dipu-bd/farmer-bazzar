@@ -24,7 +24,7 @@
                 height: 50px;
                 width : 90px;
                 font-size: 25px;
-                color: white;
+                color: black;
                 text-align: center;
             }
             #loginbutton:hover{
@@ -32,7 +32,7 @@
                 background-repeat:no-repeat;
                 /*border: none;*/
                 border: solid;
-                border-color: white;
+                border-color: black;
                 border-width: 2px;
                 cursor:pointer;
                 overflow: hidden;
@@ -55,7 +55,7 @@
                 display: block;
                 width: 100px;
                 height: 30px;
-                color: white;
+                color: black;
                 font-size: 20px;
                 text-decoration: none;
             }
@@ -63,7 +63,7 @@
                 color: red;
             }
             body {
-                background: url("assets/homepage/images/header.png");
+                /*background: url("assets/homepage/images/header.png");*/
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
@@ -86,43 +86,70 @@
         <!-- Home -->
         <section>
 
-            <nav>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div>
-                        <ul>
-                        <li style="margin-top:40px"><a href="portfolio.html">Products</a></li>
-                        <li style="margin-top:40px"><a id="loginnav" href="Login.jsp">Login</a></li>
-                        <li style="margin-top:40px"><a id="signnav" href="CreateAccount.jsp">Sign Up</a></li>
-                        <li style="margin-top:40px"><a id="homenav" href="HomePage.html">Home</a></li>
-                    </ul> <!-- /.nav -->
-                    </div><!-- /.navbar-collapse -->
-            </nav>
+           
             <div>
                 <div>
                     <div>
-                        <h1 style="font-family: monospace;text-align: center;font-size: 40px;color: #FFF">
-                            Please provide the following info to Login
+                        <h1 style="font-family: monospace;text-align: center;font-size: 40px;color: black">
+                            Welcome to Online Farmer-Bazar
                         </h1>
 
                     </div> <!-- /.header-wrapper -->
+                    <input onclick="showLoginForm()" type="button" value="Login" id="loginbutton" style="height: 35px;width: 120px;text-align: center"></input>
+                    <input onclick="showSignupForm()" type="button" value="Signup" id="loginbutton" style="height: 35px;width: 120px;text-align: center"></input>
                     <div>
-                        <form method="post" action="LoginServlet" style="text-align: center;color: whitesmoke">
+                        <form method="post" action="LoginServlet"  id="loginform" style="text-align: center;color: black">
+                            <table style="margin-left: 550px" >
+
+                                <th ></th>
+                                <th  style="text-align: left"></th>
+
+                                <tr id="tabledata">
+                                    <td>UserID</td>
+                                    <td style="color: black"><input name="UserID"></td>
+                                </tr>
+                                <tr id="tabledata">
+                                    <td>Password</td>
+                                    <td style="color: black"><input type="password" name="password"></td>
+                                </tr>
+                              
+                            </table>
+                           
+                            <input type="submit" id="loginbutton" value="Login">
+                        </form>
+                         <form method="post" action="CreateAccountServlet" id="signupform" style="text-align: center;display: none">
                             <table width="100%">
 
                                 <th width="50%"></th>
                                 <th width="50%" style="text-align: left"></th>
 
+
                                 <tr id="tabledata">
-                                    <td>UserID</td>
-                                    <td style="color: #a3a2a2"><input name="UserID"></td>
+                                    <td>UserName</td>
+                                    <td style="color: black"><input name="UserName"></td>
                                 </tr>
                                 <tr id="tabledata">
                                     <td>Password</td>
-                                    <td style="color: #a3a2a2"><input type="password" name="password"></td>
+                                    <td style="color: black"><input type="password" name="ChoosePassword"></td>
                                 </tr>
-                              
+                                <tr id="tabledata">
+                                    <td>Phone Number</td>
+                                    <td style="color: black"><input name="PhoneNumber"></td>
+                                </tr>
+                                <tr id="tabledata">
+                                    <td>City</td>
+                                    <td style="color: black"><input name="City"></td>
+                                </tr>
+                                <tr id="tabledata">
+                                    <td>Area</td>
+                                    <td style="color: black"><input name="Area"></td>
+                                </tr>
+                                <tr id="tabledata">
+                                    <td>House Number</td>
+                                    <td style="color: black"><input name="HouseNumber"></td>
+                                </tr>
                             </table>
-                            <input type="submit" id="loginbutton" value="Login">
+                            <input type="submit" id="loginbutton">
                         </form>
                     </div>
 
@@ -130,8 +157,15 @@
             </div> <!-- /.container -->
         </section> <!-- /#header -->
 
-       
-
-       
+       <script>
+         function showLoginForm() {
+                document.getElementById("loginform").style.display = "block";
+                document.getElementById("signupform").style.display = "none";
+        }
+        function showSignupForm() {
+                document.getElementById("signupform").style.display = "block";
+                document.getElementById("loginform").style.display = "none";
+        }
+           </script>
     </body>
 </html>
