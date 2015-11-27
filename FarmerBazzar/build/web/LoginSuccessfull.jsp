@@ -53,7 +53,7 @@
             }
             body {
                 /*background: url("assets/homepage/images/header.png");*/
-                background-color: black;
+               /* background-color: black;*/
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
@@ -61,25 +61,41 @@
             }
             #left{
                 float: left;
+                padding-right: 200px;
             }
-            #right{
-                float: right;
+            #center{
+                float: center;
+                padding-left: 200px;
+            }
+            #loginbutton{
+                background-color: Transparent;
+                background-repeat:no-repeat;
+                border: none;
+                cursor:pointer;
+                overflow: hidden;
+                outline:none;
+                height: 50px;
+                width : 90px;
+                font-size: 25px;
+                color: black;
+                text-align: center;
+            }
+            #loginbutton:hover{
+                /*background-color: #a3a2a2;*/
+                background-repeat:no-repeat;
+                /*border: none;*/
+                border: solid;
+                border-color: black;
+                border-width: 2px;
+                cursor:pointer;
+                overflow: hidden;
+                outline:none;
             }
         </style>
         <title>Login Successful !!!</title>
     </head>
     <body style="overflow-y: auto;overflow-x: hidden">
-
-       
-       <div id="left" >
-           <input onclick="showInfo()" type="button" value="showinfo" id="loginbutton" style="height: 35px;width: 120px;text-align: center"></input>
-           <input onclick="showLoginForm()" type="button" value="showproducts" id="loginbutton" style="height: 35px;width: 120px;text-align: center"></input>
-       </div>
-        <div id="right" >
-            
-        </div>
-        <br>
-        <%
+         <%
             Connection conn = null;
             conn = null;
             try {
@@ -97,9 +113,49 @@
                 System.out.println("error rror ttor");
             }%>
 
-       
+        <h1>
+            Welcome User!!!
+        </h1>
+       <div id="left" >
+           <input onclick="showUserinfo()" type="button" value="showinfo" id="loginbutton" style="height: 35px;width: 200px"></input>
+           <br>
+           <input onclick="showProductsinfo()" type="button" value="showproducts" id="loginbutton" style="height: 35px;width: 200px"></input>
+       </div>
+        <div id="center" id="userinfo" >
+            UserName : Rafi
+        </div>
+            <div id="center" style="display:none" id="productslist" >
+             <table>
+                <th>Item</th>
+                <th>Price</th>
+                    <%
+                        try {
+                            Statement st = conn.createStatement();
+                            ResultSet rs = st.executeQuery("select name,price from productinfo");
+                            while (rs.next()) {%> 
 
+                <tr> 
+                    <td><%=rs.getString("name")%></td>
+                    <td><%=rs.getString("price")%></td>
+                </tr>
+                <%}
+                    } catch (Exception e) {
+                    }
+                %>
+
+            </table>
+        </div>       
+        <script>
+         function showUserinfo() {
+                document.getElementById("userinfo").style.display = "block";
+                document.getElementById("productslist").style.display = "none";
+                alert("You've entered userinfo");
+        }
+        function showProductsinfo() {
+                document.getElementById("productslist").style.display = "block";
+                document.getElementById("userinfo").style.display = "none";
+                alert("You've entered showproductsinfo");
+        }
+        </script>
     </body>
-
-    
 </html>    
