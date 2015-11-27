@@ -50,14 +50,15 @@ public class DatabaseConnector {
         int count = 1;
         try {
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("select * from userinfo");
+            ResultSet rs = st.executeQuery("select * from personinfo2");
             
             while (rs.next()) {
                 ++count;
             }
+            int modAccess=0;
             // st.executeQuery("create sequence a minvalue "+count+" "+"start with "+count+" "+"increment by 1");
-            st.executeQuery("insert into UserInfo values(" + count + "," + "'" + str[0] + "'" + "," + "'" + str[1] + "'" + "," + "'" + str[2] + "'" + ","
-                    + "'" + str[3] + "'" + "," + "'" + str[4] + "'" + "," + "'" + str[5] + "'" + ")");
+            st.executeQuery("insert into personinfo2 values(" + count + "," +"'" + str[0] + "'" + "," + "'" + str[3] + "'" + "," + "'" + str[1] + "'" + ","
+                    + "'" + str[2] + "'" + "," + "'" + str[4] +")");
             st.executeQuery("commit");
             System.out.println("Alhamdulillah" + count);
         } catch (Exception e) {

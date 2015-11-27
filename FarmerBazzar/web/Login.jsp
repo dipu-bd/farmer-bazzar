@@ -146,17 +146,10 @@
                                 <th width="50%" style="text-align: left"></th>
 
 
+                              
                                 <tr id="tabledata">
-                                    <td>Email</td>
-                                    <td style="color: black"><input name="Email"></td>
-                                </tr>
-                                <tr id="tabledata">
-                                    <td>FirstName</td>
-                                    <td style="color: black"><input name="FirstName"></td>
-                                </tr>
-                                <tr id="tabledata">
-                                    <td>LastName</td>
-                                    <td style="color: black"><input name="LastName"></td>
+                                    <td>Name</td>
+                                    <td style="color: black"><input name="Name"></td>
                                 </tr>
                                 <tr id="tabledata">
                                     <td>Password</td>
@@ -177,9 +170,9 @@
                                     <%
                                         try {
                                             Statement st = conn.createStatement();
-                                            ResultSet rs = st.executeQuery("select name from district");
+                                            ResultSet rs = st.executeQuery("select name,id from district");
                                             while (rs.next()) { %>
-                                            <option> <%= rs.getString("name") %>  </option>
+                                            <option value=<%=rs.getString("name") %>> <%= rs.getString("name") %>  </option>
                                     <% }
                                         } catch (Exception e) {
                                         }

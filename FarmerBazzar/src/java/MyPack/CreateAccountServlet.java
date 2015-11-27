@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CreateAccountServlet extends HttpServlet {
     
-    private String userName,password,phoneNumber,city,area,houseNumber;
+    private String name,address,password,phoneNumber,district;
     public static int userID;
     
     public int getUserID(){
@@ -71,13 +71,14 @@ public class CreateAccountServlet extends HttpServlet {
    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       userName = request.getParameter("UserName");
-       password = request.getParameter("ChoosePassword");
+       
+       name = request.getParameter("Name");
+       
+       password = request.getParameter("Password");
        phoneNumber = request.getParameter("PhoneNumber");
-       city = request.getParameter("City");
-       area = request.getParameter("Area");
-       houseNumber = request.getParameter("HouseNumber");
-       String[] str = {userName,password,phoneNumber,city,area,houseNumber};
+       address = request.getParameter("Address");
+       district = request.getParameter("district");
+       String[] str = {name,password,phoneNumber,address,district};
        DatabaseConnector dc = new DatabaseConnector();
        dc.setConnectionWithOracle();
       
