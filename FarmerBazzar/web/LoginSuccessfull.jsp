@@ -59,11 +59,11 @@
                 -o-background-size: cover;
                 background-size: cover;
             }
-            #left{
+            .left{
                 float: left;
                 padding-right: 200px;
             }
-            #center{
+            .center{
                 float: center;
                 padding-left: 200px;
             }
@@ -116,25 +116,25 @@
         <h1>
             Welcome User!!!
         </h1>
-       <div id="left" >
+       <div class="left" >
            <input onclick="showUserinfo()" type="button" value="showinfo" id="loginbutton" style="height: 35px;width: 200px"></input>
            <br>
            <input onclick="showProductsinfo()" type="button" value="showproducts" id="loginbutton" style="height: 35px;width: 200px"></input>
        </div>
-        <div id="center" id="userinfo" >
+        <div class="center" id="userinfo">
             UserName : Rafi
         </div>
-            <div id="center" style="display:none" id="productslist" >
+            <div class="center" id="productsinfo" style="display:none" >
              <table>
-                <th>Item</th>
-                <th>Price</th>
+                 <th>Item</th>
+                 <th style="text-align: center" >Price</th>
                     <%
                         try {
                             Statement st = conn.createStatement();
                             ResultSet rs = st.executeQuery("select name,price from productinfo");
                             while (rs.next()) {%> 
 
-                <tr> 
+                <tr style="text-align: center"> 
                     <td><%=rs.getString("name")%></td>
                     <td><%=rs.getString("price")%></td>
                 </tr>
@@ -148,13 +148,13 @@
         <script>
          function showUserinfo() {
                 document.getElementById("userinfo").style.display = "block";
-                document.getElementById("productslist").style.display = "none";
-                alert("You've entered userinfo");
+                document.getElementById("productsinfo").style.display = "none";
+                
         }
         function showProductsinfo() {
-                document.getElementById("productslist").style.display = "block";
+                document.getElementById("productsinfo").style.display = "block";
                 document.getElementById("userinfo").style.display = "none";
-                alert("You've entered showproductsinfo");
+                
         }
         </script>
     </body>
