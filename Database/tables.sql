@@ -21,8 +21,7 @@ CREATE TABLE PersonInfo (
 
 /* Category tree of the crop */
 CREATE TABLE CropCategory (
-	ID INTEGER PRIMARY KEY, /* id of the crop */	
-	ParentID INTEGER REFERENCES CropCategory(ID), /* parent category id */	
+	ID INTEGER PRIMARY KEY, /* id of the crop */	 
 	Name VARCHAR(150) NOT NULL, /* name of the category */
 	Details VARCHAR(450) /* short information if necessary */
 );
